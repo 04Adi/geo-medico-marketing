@@ -4,6 +4,9 @@ import styles from './Header.module.css'
 export default function Header({ onTabChange }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const handleLogin = (type) => {
+  window.location.href = `https://geomedico.com/login?persona=${type}`;
+   };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -33,8 +36,8 @@ export default function Header({ onTabChange }) {
           </ul>
 
           <div className={styles.navActions}>
-            <button className="btn btn-outline btn-sm">Login</button>
-            <button className="btn btn-primary btn-sm">Get Started</button>
+            <button onClick={() => handleLogin("patient")}>Login</button>
+            <button onClick={() => handleLogin("patient")}>Get Started</button>
           </div>
 
           <button
