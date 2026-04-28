@@ -1,0 +1,227 @@
+/* ── Section shell ─────────────────────────────────────────────────────── */
+.section {
+  position: relative;
+  background: #050d1a;
+  color: white;
+  padding: 72px 0 56px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Animated dot-grid background */
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(56,189,248,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56,189,248,0.04) 1px, transparent 1px);
+  background-size: 44px 44px;
+  animation: gridPan 40s linear infinite;
+  pointer-events: none;
+}
+@keyframes gridPan {
+  0%   { background-position: 0 0; }
+  100% { background-position: 44px 44px; }
+}
+
+/* Radial vignette that fades edges */
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 55%,
+    transparent 40%,
+    #050d1a 85%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Top headline copy ─────────────────────────────────────────────────── */
+.topCopy {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 0 24px;
+  margin-bottom: 24px;
+}
+.h1 {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+.hl {
+  background: linear-gradient(120deg, #38bdf8 20%, #4ade80 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.sub {
+  font-size: clamp(14px, 2vw, 18px);
+  color: rgba(255,255,255,0.6);
+  max-width: 560px;
+  line-height: 1.75;
+}
+
+/* ── SVG diagram container ─────────────────────────────────────────────── */
+.diagramWrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 740px;
+  padding: 0 16px;
+}
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+/* ── Center hub animations ─────────────────────────────────────────────── */
+.hubAura {
+  animation: hubBreath 4s ease-in-out infinite;
+}
+@keyframes hubBreath {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.12); }
+}
+
+.hubBody {
+  animation: hubPulse 4s ease-in-out infinite;
+}
+@keyframes hubPulse {
+  0%, 100% { filter: drop-shadow(0 0 10px #3b82f6) drop-shadow(0 0 22px #1d4ed840); }
+  50%       { filter: drop-shadow(0 0 22px #60a5fa) drop-shadow(0 0 44px #3b82f640); }
+}
+
+/* Rotating orbit ring (inner <circle> rotates around SVG center) */
+.orbitRingWrap {
+  transform-origin: 370px 295px;   /* = CX, CY */
+  animation: orbitSpin 24s linear infinite;
+}
+.orbitRingWrapRev {
+  transform-origin: 370px 295px;
+  animation: orbitSpin 18s linear infinite reverse;
+}
+@keyframes orbitSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── Node float animation ──────────────────────────────────────────────── */
+.nodeFloat {
+  animation: nodeFloat 4.5s ease-in-out infinite;
+  animation-delay: var(--fd, 0s);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes nodeFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
+/* ── Hover info card ───────────────────────────────────────────────────── */
+.infoCard {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(5,13,26,0.92);
+  border: 1px solid var(--nc, #3b82f6);
+  border-radius: 16px;
+  padding: 14px 22px;
+  box-shadow: 0 8px 40px var(--nglow, rgba(59,130,246,0.3));
+  backdrop-filter: blur(16px);
+  animation: cardIn 0.25s ease;
+  white-space: nowrap;
+  z-index: 10;
+}
+@keyframes cardIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.infoEmoji { font-size: 28px; }
+.infoTitle { font-size: 15px; font-weight: 800; line-height: 1.2; margin-bottom: 3px; }
+.infoWhy   { font-size: 12.5px; color: rgba(255,255,255,0.65); max-width: 320px; white-space: normal; line-height: 1.5; }
+
+/* ── Chip row ──────────────────────────────────────────────────────────── */
+.chipRow {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 24px;
+  margin-top: -8px;
+  margin-bottom: 28px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: 1px solid var(--nbb, rgba(255,255,255,0.2));
+  background: var(--nb, rgba(255,255,255,0.06));
+  color: var(--nc, white);
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.22s;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+}
+.chip:hover {
+  background: var(--nc);
+  color: #050d1a;
+  border-color: var(--nc);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 24px var(--nbb, rgba(255,255,255,0.2));
+}
+.chip > span:first-child { font-size: 16px; }
+
+/* ── CTA buttons ───────────────────────────────────────────────────────── */
+.cta {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* ── Trust line ────────────────────────────────────────────────────────── */
+.trust {
+  position: relative;
+  z-index: 2;
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+}
+.trust strong { color: rgba(255,255,255,0.7); font-weight: 700; }
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .section { padding: 56px 0 48px; }
+  .h1 { letter-spacing: -0.5px; }
+  .infoCard { display: none; }
+  .chip { padding: 9px 16px; font-size: 12.5px; }
+}
+@media (max-width: 480px) {
+  .chipRow { gap: 8px; }
+  .chip { padding: 8px 14px; font-size: 12px; }
+  .cta { gap: 10px; }
+}
