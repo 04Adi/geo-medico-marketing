@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { Download, Plus, Search, LayoutGrid, List, X, SearchX, CheckCircle2 } from 'lucide-react'
 import styles from './PortalShell.module.css'
 
 // ─── Status badge (re-exported for use in tab files) ──────────────────────────
@@ -94,12 +95,16 @@ export default function PortalShell({
           </div>
         </div>
         <div className={styles.headerActions}>
-          <button className={styles.exportBtn}>⬇ Export</button>
-          <button className={styles.addBtn}
-            style={{ background: config.color, boxShadow: `0 4px 16px ${config.color}40` }}
-            onClick={() => setShowAdd(true)}>
-            + {config.addLabel || 'Add New'}
+          <button className={styles.exportBtn} style={{ display:'inline-flex', alignItems:'center', gap:6 }}>
+            <Download size={14} /> Export
           </button>
+          {config.addLabel && (
+            <button className={styles.addBtn}
+              style={{ background: config.color, boxShadow: `0 4px 16px ${config.color}40`, display:'inline-flex', alignItems:'center', gap:6 }}
+              onClick={() => setShowAdd(true)}>
+              <Plus size={14} /> {config.addLabel}
+            </button>
+          )}
         </div>
       </div>
 
@@ -121,7 +126,7 @@ export default function PortalShell({
 
       {/* ── Lead pipeline funnel ── */}
       <div className={styles.pipeline}>
-        <span className={styles.pipelineTitle}>📊 Lead Pipeline:</span>
+        <span className={styles.pipelineTitle}>Lead Pipeline:</span>
         {[
           { key: 'lead',       label: 'New Leads',  color: '#d97706' },
           { key: 'onboarding', label: 'Onboarding', color: '#0a6ebd' },
@@ -142,8 +147,8 @@ export default function PortalShell({
           </span>
         ))}
         {statusF !== 'all' && (
-          <button className={styles.clearPipe} onClick={() => setStatusF('all')}>
-            ✕ Clear
+          <button className={styles.clearPipe} onClick={() => setStatusF('all')} style={{ display:'inline-flex', alignItems:'center', gap:4 }}>
+            <X size={12} /> Clear
           </button>
         )}
       </div>
@@ -151,12 +156,14 @@ export default function PortalShell({
       {/* ── Controls ── */}
       <div className={styles.controls}>
         <div className={styles.searchWrap}>
-          <span className={styles.searchIcon}>🔍</span>
+          <span className={styles.searchIcon}><Search size={15} /></span>
           <input className={styles.searchInput}
             type="text" placeholder={`Search ${config.title.toLowerCase()}…`}
             value={search} onChange={e => setSearch(e.target.value)} />
           {search && (
-            <button className={styles.clearSearch} onClick={() => setSearch('')}>✕</button>
+            <button className={styles.clearSearch} onClick={() => setSearch('')}>
+              <X size={13} />
+            </button>
           )}
         </div>
 
@@ -178,9 +185,9 @@ export default function PortalShell({
 
         <div className={styles.viewToggle}>
           <button className={`${styles.vBtn} ${view === 'grid' ? styles.vBtnOn : ''}`}
-            onClick={() => setView('grid')} title="Grid view">⊞</button>
+            onClick={() => setView('grid')} title="Grid view"><LayoutGrid size={15} /></button>
           <button className={`${styles.vBtn} ${view === 'list' ? styles.vBtnOn : ''}`}
-            onClick={() => setView('list')} title="List view">☰</button>
+            onClick={() => setView('list')} title="List view"><List size={15} /></button>
         </div>
         <span className={styles.resultCount}>{filtered.length} / {items.length}</span>
       </div>
@@ -188,7 +195,7 @@ export default function PortalShell({
       {/* ── Card grid / list ── */}
       {filtered.length === 0 ? (
         <div className={styles.empty}>
-          <div className={styles.emptyIcon}>🔍</div>
+          <div className={styles.emptyIcon}><SearchX size={40} /></div>
           <h3>No results found</h3>
           <p>Try adjusting your search or filters</p>
           <button className={styles.clearAll}
@@ -205,8 +212,10 @@ export default function PortalShell({
       {/* ── Add toast ── */}
       {showAdd && (
         <div className={styles.addToast}>
-          <span>✅ Opening onboarding form for {config.addLabel}…</span>
-          <button onClick={() => setShowAdd(false)}>✕</button>
+          <span style={{ display:'inline-flex', alignItems:'center', gap:6 }}>
+            <CheckCircle2 size={15} color="#16a34a" /> Opening onboarding form for {config.addLabel}…
+          </span>
+          <button onClick={() => setShowAdd(false)}><X size={14} /></button>
         </div>
       )}
     </div>

@@ -1,5 +1,6 @@
 import styles from './Footer.module.css'
 
+
 const LINKS = {
   Services: ['Find a Doctor', 'Book Lab Tests', 'Order Medicines', 'Emergency Ambulance', 'Virtual Consultation', 'POD Kiosks'],
   'For Providers': ['Join as Doctor', 'Hospital Onboarding', 'Pharmacy Partner', 'Diagnostic Lab Partner', 'Ambulance Fleet Partner'],
@@ -7,7 +8,7 @@ const LINKS = {
   Support: ['Help Centre', 'Contact Us', 'Privacy Policy', 'Terms of Service', 'Grievance Redressal', 'DISHA Compliance'],
 }
 
-export default function Footer() {
+export default function Footer({ onAdmin }) {
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -53,7 +54,30 @@ export default function Footer() {
         </div>
 
         <div className={styles.bottom}>
-          <p>© 2026 GeoMedico Health Technologies Pvt. Ltd. All rights reserved. CIN: U85100MH2020PTC123456</p>
+          <p>
+            © 2026 GeoMedico Health Technologies Pvt. Ltd. All rights reserved. CIN: U85100MH2020PTC123456
+            {onAdmin && (
+              <button
+                onClick={onAdmin}
+                style={{
+                  marginLeft: 16,
+                  background: 'none',
+                  border: 'none',
+                  color: 'rgba(255,255,255,.2)',
+                  fontSize: 11,
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  padding: 0,
+                  transition: 'color 0.2s',
+                }}
+                onMouseEnter={e => e.target.style.color = 'rgba(255,255,255,.5)'}
+                onMouseLeave={e => e.target.style.color = 'rgba(255,255,255,.2)'}
+                title="Admin Panel"
+              >
+                Admin
+              </button>
+            )}
+          </p>
           <div className={styles.stores}>
             <button className={styles.storeBtn}>
               <span>🍎</span>

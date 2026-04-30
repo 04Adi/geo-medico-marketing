@@ -1,0 +1,283 @@
+/* ── Section wrapper ──────────────────────────────────────────────────────── */
+.sectionWrap {
+  padding: 72px 32px;
+  background: var(--white);
+}
+
+.altBg {
+  background: var(--gray-1);
+}
+
+.regBg {
+  background: var(--primary-light);
+}
+
+.sectionInner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── Section heading ──────────────────────────────────────────────────────── */
+.sectionHead {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.sectionBar {
+  width: 52px;
+  height: 4px;
+  border-radius: 2px;
+  margin: 0 auto 14px;
+}
+
+.sectionSub {
+  font-size: 14px;
+  color: var(--text-muted);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── About layout ─────────────────────────────────────────────────────────── */
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.aboutText h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 14px;
+}
+
+.aboutText p {
+  color: #555;
+  line-height: 1.85;
+  margin-bottom: 12px;
+  font-size: 14.5px;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: white;
+  border-left: 4px solid var(--secondary);
+  border-radius: 8px;
+  font-size: 13.5px;
+  box-shadow: var(--shadow-sm);
+}
+
+.featureIcon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+/* ── Cards grid ───────────────────────────────────────────────────────────── */
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── Entity card ──────────────────────────────────────────────────────────── */
+.eCard {
+  background: white;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.eCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.eCardImg {
+  width: 100%;
+  height: 156px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eCardEmoji {
+  font-size: 3.4rem;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.25));
+}
+
+.eCardBody {
+  padding: 18px 20px 20px;
+}
+
+.eCardName {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.eCardDesig {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.eCardMeta {
+  font-size: 12.5px;
+  color: #555;
+  line-height: 1.55;
+  margin-bottom: 4px;
+}
+
+.eBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.eBadge {
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.eBadgeGreen {
+  background: var(--secondary-light);
+  color: var(--secondary-dark);
+}
+
+.eBadgePurple {
+  background: #ede9fe;
+  color: #4c1d95;
+}
+
+/* ── Registration ─────────────────────────────────────────────────────────── */
+.regCard {
+  background: white;
+  border: 2px solid var(--primary);
+  border-radius: 11px;
+  padding: 36px 40px;
+  max-width: 540px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-blue);
+}
+
+.regTitle {
+  color: var(--primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.successMsg {
+  background: #dcfce7;
+  color: #166534;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.regForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.formGroup label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--text);
+  background: white;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(10, 110, 189, 0.1);
+}
+
+.formGroup textarea {
+  resize: vertical;
+}
+
+.regBtn {
+  width: 100%;
+  padding: 13px;
+  background: linear-gradient(135deg, var(--primary), #38bdf8);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: opacity 0.2s, transform 0.2s;
+  margin-top: 4px;
+}
+
+.regBtn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .cardsGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .sectionWrap { padding: 48px 16px; }
+  .aboutGrid   { grid-template-columns: 1fr; gap: 32px; }
+  .cardsGrid   { grid-template-columns: 1fr; }
+  .featureGrid { grid-template-columns: 1fr; }
+  .regCard     { padding: 24px 20px; }
+  .sectionTitle { font-size: 1.5rem; }
+}
